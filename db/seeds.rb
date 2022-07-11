@@ -1,6 +1,6 @@
 
-r1 = Role.create({ name: 'Regular', description: 'Can read items' })
-r2 = Role.create({ name: 'Seller', description: 'Can read and create items. Can update and destroy own items' })
+r1 = Role.create({ name: 'Reader', description: 'Can read items' })
+r2 = Role.create({ name: 'Maker', description: 'Can read and create items. Can update and destroy own items' })
 r3 = Role.create({ name: 'Admin', description: 'Can perform any CRUD operation on any resource' })
 
 u1 = User.create({ name: 'Sally', email: 'sally@example.com', password: '123456', password_confirmation: '123456', role_id: r1.id })
