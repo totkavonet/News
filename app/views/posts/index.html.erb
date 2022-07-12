@@ -1,7 +1,7 @@
 
 
 <h1>Posts</h1>
-<% if can? :discard, Post %>
+<% if current_user&.admin? %>
   <%= link_to 'Kept', posts_path %>
   <%= link_to 'All', all_posts_path %>
   <%= link_to 'Discarded', discarded_posts_path %>
