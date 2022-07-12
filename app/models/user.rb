@@ -17,4 +17,13 @@ class User < ApplicationRecord
     role.name == 'Admin'
   end
 
+  def maker?
+    role.name == 'Maker'
+  end
+
+  def reader?
+    role.name == 'Reader'
+  end
+
+
 end
