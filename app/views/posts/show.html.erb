@@ -1,4 +1,5 @@
 
+<p><%= image_tag @post.image.url(:medium) %></p>
 
 <p>
   <strong>Title:</strong>
@@ -14,6 +15,8 @@
   <strong>User:</strong>
   <%= @post.user.name %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
