@@ -1,12 +1,20 @@
-<h1>Posts</h1>
 
+
+<h1>Posts</h1>
+<% if can? :discard, Post %>
+  <%= link_to 'Kept', posts_path %>
+  <%= link_to 'All', all_posts_path %>
+  <%= link_to 'Discarded', discarded_posts_path %>
+<% end %>
 <table>
   <thead>
   <tr>
+    <th>Image</th>
     <th>Title</th>
     <th>Description</th>
     <th>User</th>
-    <th colspan="3"></th>
+    <th>Discarded?</th>
+    <th colspan="4"></th>
   </tr>
   </thead>
 
@@ -17,10 +25,11 @@
       <td><%= post.title %></td>
       <td><%= post.description %></td>
       <td><%= post.user.name %></td>
-<!--      <td><%#= link_to 'Show', post %></td>-->
+      <td><%= post.discarded? %></td>
+      <!--      <td><%#= link_to 'Show', post %></td>-->
       <td>
         <% if can? :read, post %>
-          <%= link_to 'Show', post  %>
+          <%= link_to 'Show', post %>
         <% end %>
       </td>
       <td>
@@ -28,6 +37,13 @@
           <%= link_to 'Edit', edit_post_path(post) %>
         <% end %>
       </td>
+
+      <td>
+        <% if can? :destroy, post %>
+          <%= link_to 'Discard', discard_post_path(post), method: :delete, data: { confirm: 'Are you sure to Discard this news?' } %>
+        <% end %>
+      </td>
+
       <td>
         <% if can? :destroy, post %>
           <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>

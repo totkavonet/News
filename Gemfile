@@ -60,3 +60,5 @@ gem "devise", "~> 4.8"
 gem "cancancan", "~> 3.4"
 
 gem 'paperclip', '~> 4.2.1'
+
+gem 'discard', '~> 1.2'

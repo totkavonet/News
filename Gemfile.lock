@@ -90,6 +90,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    discard (1.2.1)
+      activerecord (>= 4.2, < 8)
     erubi (1.10.0)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -239,6 +241,7 @@ DEPENDENCIES
   cancancan (~> 3.4)
   capybara (>= 3.26)
   devise (~> 4.8)
+  discard (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   paperclip (~> 4.2.1)

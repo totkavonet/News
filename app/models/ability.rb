@@ -16,6 +16,9 @@ class Ability
       can :destroy, Post do |post|
         post.try(:user) == user
       end
+      can :discard, Post do |post|
+        post.try(:user) == user
+      end
     elsif user.reader?
       can :read, Post
     end

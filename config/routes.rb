@@ -7,10 +7,14 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
 
-  resources :posts
+  resources :posts do
+    get :all, :discarded, on: :collection
+    member do
+      delete :discard
+    end
+  end
   resources :roles
   resources :users
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

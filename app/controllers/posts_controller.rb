@@ -1,12 +1,24 @@
 class PostsController < ApplicationController
   # before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: :index
-  load_and_authorize_resource except: :index
+  load_and_authorize_resource except: [:index, :all, :discarded]
 
 
   # GET /posts or /posts.json
   def index
+    @posts = Post.kept
+    render 'posts/index'
+  end
+
+  def all
     @posts = Post.all
+    render 'posts/index'
+
+  end
+
+  def discarded
+    @posts = Post.discarded
+    render 'posts/index'
   end
 
   # GET /posts/1 or /posts/1.json
@@ -51,6 +63,11 @@ class PostsController < ApplicationController
   end
 
   # DELETE /posts/1 or /posts/1.json
+  def discard
+    @post.discard
+    redirect_to posts_url, notice: "Post was successfully discarded."
+  end
+
   def destroy
     @post.destroy
 
