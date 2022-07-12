@@ -13,4 +13,8 @@ class User < ApplicationRecord
     self.role = Role.find_by name: 'Maker' if role.nil?
   end
 
+  def admin?
+    role.name == 'Admin'
+  end
+
 end
